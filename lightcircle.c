@@ -1,8 +1,4 @@
 
-//CŒ¾ŒêÀK‚P@ÅI‰Û‘è@ƒ‰ƒCƒgƒT[ƒNƒ‹ƒQ[ƒ€
-//R18E1002@R1A@³Œ³~–ç
-//‚Q‚O‚P‚WE‚O‚VE‚Q‚S
-
 #include<stdio.h>
 #include<windows.h>
 #include<stdlib.h>
@@ -13,31 +9,31 @@
 #define UP_MOVE 2
 #define DOWN_MOVE 4
 
-int asiato[21][61];//ˆÚ“®—š—ğ
-int i,j;//ƒ‹[ƒv§Œä
-int x,y;    //player§Œä@ˆÊ’u
-int houkou; //@@@@@@ •ûŒü
-int ex2,ey2,ex1,ey1;    //enemy§Œä ˆÊ’u
-int ehoukou2,ehoukou1;  //          •ûŒü
-int movecount;//ˆÚ“®‰ñ”
-char gamemode;//“ïˆÕ“x
-int HIGHSCORE=0;//HIGHSCORE‰Šú’lİ’è
-int score;//“_”
-int speed;//ˆÚ“®‘¬“x
+int asiato[21][61];//ç§»å‹•å±¥æ­´
+int i,j;//ãƒ«ãƒ¼ãƒ—åˆ¶å¾¡
+int x,y;    //playeråˆ¶å¾¡ã€€ä½ç½®
+int houkou; //ã€€ã€€ã€€ã€€ã€€ã€€ æ–¹å‘
+int ex2,ey2,ex1,ey1;    //enemyåˆ¶å¾¡ ä½ç½®
+int ehoukou2,ehoukou1;  //          æ–¹å‘
+int movecount;//ç§»å‹•å›æ•°
+char gamemode;//é›£æ˜“åº¦
+int HIGHSCORE=0;//HIGHSCOREåˆæœŸå€¤è¨­å®š
+int score;//ç‚¹æ•°
+int speed;//ç§»å‹•é€Ÿåº¦
 
-void gotoXY(int x,int y);//ˆÊ’uˆÚ“®
-void setColor(int color);//F•ÏX
-void asiato_0(void);//ˆÚ“®—š—ğ‰Šú‰»
-void TITLE_BORD(void);//ƒ^ƒCƒgƒ‹
-void GAME_BORD(void);//ƒvƒŒƒC‰æ–Ê
-void SUB_BORD(void);//ƒQ[ƒ€î•ñ•\¦
-void ENEMY1(void);//“GˆÚ“®E•\¦
+void gotoXY(int x,int y);//ä½ç½®ç§»å‹•
+void setColor(int color);//è‰²å¤‰æ›´
+void asiato_0(void);//ç§»å‹•å±¥æ­´åˆæœŸåŒ–
+void TITLE_BORD(void);//ã‚¿ã‚¤ãƒˆãƒ«
+void GAME_BORD(void);//ãƒ—ãƒ¬ã‚¤ç”»é¢
+void SUB_BORD(void);//ã‚²ãƒ¼ãƒ æƒ…å ±è¡¨ç¤º
+void ENEMY1(void);//æ•µç§»å‹•ãƒ»è¡¨ç¤º
 void ENEMY2(void);//
-void PLAYER_MOVE(void);//PlayerˆÚ“®E•\¦
-int Xlimit(int xl);     //ˆÚ“®”ÍˆÍãŒÀw’è
+void PLAYER_MOVE(void);//Playerç§»å‹•ãƒ»è¡¨ç¤º
+int Xlimit(int xl);     //ç§»å‹•ç¯„å›²ä¸Šé™æŒ‡å®š
 int Ylimit(int yl);     //
 int ehoukoulimit(int a);  //
-void GAME_SCORE(void);//“_”ŒvZ
+void GAME_SCORE(void);//ç‚¹æ•°è¨ˆç®—
 
 
 int main(void)
@@ -47,47 +43,47 @@ int main(void)
     
 
     do{
-        TITLE_BORD();//ƒ^ƒCƒgƒ‹‰æ–Ê•\¦
-        asiato_0();//”z—ñ‰Šú‰»
-        x=40;       //‰ŠúˆÊ’uw’è
+        TITLE_BORD();//ã‚¿ã‚¤ãƒˆãƒ«ç”»é¢è¡¨ç¤º
+        asiato_0();//é…åˆ—åˆæœŸåŒ–
+        x=40;       //åˆæœŸä½ç½®æŒ‡å®š
         y=10;       //
         ex2=60;     //
         ey2=20;     //
         ex1=0;      //
         ey1=0;      //
-        movecount=1;//ƒXƒRƒAŒvZ—pƒJƒEƒ“ƒg
-        speed=100;  //‰Šú‘¬“xİ’è
-        ehoukou2=LEFT_MOVE; //‰Šú•ûŒüİ’è
+        movecount=1;//ã‚¹ã‚³ã‚¢è¨ˆç®—ç”¨ã‚«ã‚¦ãƒ³ãƒˆ
+        speed=100;  //åˆæœŸé€Ÿåº¦è¨­å®š
+        ehoukou2=LEFT_MOVE; //åˆæœŸæ–¹å‘è¨­å®š
         ehoukou1=RIGHT_MOVE;//
         houkou=RIGHT_MOVE;  //
 
-        GAME_BORD();//ƒQ[ƒ€ƒ{[ƒh•\¦
-        while(GetAsyncKeyState(VK_ESCAPE)==0){  //Esc“ü—Í‚Ü‚Å‘±s
+        GAME_BORD();//ã‚²ãƒ¼ãƒ ãƒœãƒ¼ãƒ‰è¡¨ç¤º
+        while(GetAsyncKeyState(VK_ESCAPE)==0){  //Escå…¥åŠ›ã¾ã§ç¶šè¡Œ
             
-            ENEMY1();//enemy1”z’uEˆÚ“®
+            ENEMY1();//enemy1é…ç½®ãƒ»ç§»å‹•
 
-            if(gamemode=='3'){//HARDMODE‚È‚çenemy2”z’uEˆÚ“®
+            if(gamemode=='3'){//HARDMODEãªã‚‰enemy2é…ç½®ãƒ»ç§»å‹•
                 ENEMY2();
             }
-            movecount++;//ƒJƒEƒ“ƒgXV
-            PLAYER_MOVE();//Player”z’uEˆÚ“®
-            if(asiato[y][x]==3){//•‰‚¯”»’èE€–SˆÊ’u‚Éˆó
+            movecount++;//ã‚«ã‚¦ãƒ³ãƒˆæ›´æ–°
+            PLAYER_MOVE();//Playeré…ç½®ãƒ»ç§»å‹•
+            if(asiato[y][x]==3){//è² ã‘åˆ¤å®šãƒ»æ­»äº¡ä½ç½®ã«å°
                 gotoXY(x,y);
                 setColor(0xdf);
                 printf("X");
-                break;//ƒQ[ƒ€I—¹‚µƒXƒRƒA‰æ–Ê‚Ö
+                break;//ã‚²ãƒ¼ãƒ çµ‚äº†ã—ã‚¹ã‚³ã‚¢ç”»é¢ã¸
             }
-            SUB_BORD();//ƒQ[ƒ€î•ñ•\¦
+            SUB_BORD();//ã‚²ãƒ¼ãƒ æƒ…å ±è¡¨ç¤º
             Sleep(speed);
-            if(gamemode!='1'&&movecount%20==0&&speed>=50)speed=speed-5;//gamemode‚ªEASY‚ÌˆÈŠO20‰ñ–‚ÉƒXƒs[ƒhƒAƒbƒv
+            if(gamemode!='1'&&movecount%20==0&&speed>=50)speed=speed-5;//gamemodeãŒEASYã®æ™‚ä»¥å¤–20å›äº‹ã«ã‚¹ãƒ”ãƒ¼ãƒ‰ã‚¢ãƒƒãƒ—
         }
         setColor(0x7c);
         gotoXY(63,19);
-        printf("end? y/n:>");//I—¹”»’è
+        printf("end? y/n:>");//çµ‚äº†åˆ¤å®š
 	    fflush(stdin);
         end = getchar();
         fflush(stdin);
-        }while(end!='y');//end‚É‚™‚ª“ü—Í‚³‚ê‚é‚Ü‚ÅŒJ‚è•Ô‚µ
+        }while(end!='y');//endã«ï½™ãŒå…¥åŠ›ã•ã‚Œã‚‹ã¾ã§ç¹°ã‚Šè¿”ã—
     return 0;
 }
 
@@ -96,24 +92,24 @@ void GAME_SCORE(void){
     int count=0;
     for(i=0;i<61;i++){
         for(j=0;j<21;j++){
-            if(asiato[j][i]==1)count++;//player‚ª’Ê‚Á‚½ƒ}ƒX‚Ì”ƒJƒEƒ“ƒg
+            if(asiato[j][i]==1)count++;//playerãŒé€šã£ãŸãƒã‚¹ã®æ•°ã‚«ã‚¦ãƒ³ãƒˆ
         }
     }
-    score=count*gamemode/10;//“_”ŒvZ
-    if(gamemode=='3'){  //“ïˆÕ“x‚²‚Æ‚É‰Á“_
+    score=count*gamemode/10;//ç‚¹æ•°è¨ˆç®—
+    if(gamemode=='3'){  //é›£æ˜“åº¦ã”ã¨ã«åŠ ç‚¹
         score=score*3;
     }
     if(gamemode=='2'){
         score=score*2; 
     }
-    if(score>HIGHSCORE)HIGHSCORE=score;//Å‚“¾“_‚ğ’´‚¦‚½‚çHIGHTSCOREXV
+    if(score>HIGHSCORE)HIGHSCORE=score;//æœ€é«˜å¾—ç‚¹ã‚’è¶…ãˆãŸã‚‰HIGHTSCOREæ›´æ–°
     return;
 }
 
-void SUB_BORD(void){    //ƒQ[ƒ€’†î•ñ•\¦
+void SUB_BORD(void){    //ã‚²ãƒ¼ãƒ ä¸­æƒ…å ±è¡¨ç¤º
     setColor(0x70);
     gotoXY(62,3);
-    printf("ƒ‰ƒCƒgƒT[ƒNƒ‹ƒQ[ƒ€");
+    printf("ãƒ©ã‚¤ãƒˆã‚µãƒ¼ã‚¯ãƒ«ã‚²ãƒ¼ãƒ ");
     gotoXY(63,5);
     printf("GAMEMODE:");
     switch(gamemode){
@@ -142,30 +138,30 @@ void SUB_BORD(void){    //ƒQ[ƒ€’†î•ñ•\¦
 }
 
 void PLAYER_MOVE(void){
-    gotoXY(x,y);    //‰ŠúˆÊ’u–”‚Í‘O‰ñˆÚ“®ˆÊ’u‚Éƒ}[ƒJ[•\¦
+    gotoXY(x,y);    //åˆæœŸä½ç½®åˆã¯å‰å›ç§»å‹•ä½ç½®ã«ãƒãƒ¼ã‚«ãƒ¼è¡¨ç¤º
     setColor(0x9f); //
     printf("@");    //
-    if(GetAsyncKeyState(VK_RIGHT)!=0&&houkou!=LEFT_MOVE)houkou=RIGHT_MOVE;  //ã‰º¶‰E“ü—Í‚ÅˆÚ“®•ûŒüw’è
+    if(GetAsyncKeyState(VK_RIGHT)!=0&&houkou!=LEFT_MOVE)houkou=RIGHT_MOVE;  //ä¸Šä¸‹å·¦å³å…¥åŠ›ã§ç§»å‹•æ–¹å‘æŒ‡å®š
     if(GetAsyncKeyState(VK_LEFT)!=0&&houkou!=RIGHT_MOVE)houkou=LEFT_MOVE;   //
     if(GetAsyncKeyState(VK_UP)!=0&&houkou!=DOWN_MOVE)houkou=UP_MOVE;        //
     if(GetAsyncKeyState(VK_DOWN)!=0&&houkou!=UP_MOVE)houkou=DOWN_MOVE;      //
-    if(houkou==RIGHT_MOVE)x++;  //ˆÚ“®•ûŒü‚ÉˆÊ’uˆÚ“®
+    if(houkou==RIGHT_MOVE)x++;  //ç§»å‹•æ–¹å‘ã«ä½ç½®ç§»å‹•
     if(houkou==LEFT_MOVE)x--;   //
     if(houkou==UP_MOVE)y--;     //
     if(houkou==DOWN_MOVE)y++;   //
-    x=Xlimit(x);//XYãŒÀ”»’èEˆÚ“®
+    x=Xlimit(x);//XYä¸Šé™åˆ¤å®šãƒ»ç§»å‹•
     y=Ylimit(y);//
-    if(asiato[y][x]!=0){//‚·‚Å‚É’N‚©’Ê‚Á‚Ä‚¢‚½‚çasiato‚É‚R
+    if(asiato[y][x]!=0){//ã™ã§ã«èª°ã‹é€šã£ã¦ã„ãŸã‚‰asiatoã«ï¼“
         asiato[y][x]=3;   
     }else{
-        asiato[y][x]=1;//’N‚à’Ê‚Á‚Ä‚¢‚È‚¯‚ê‚Îasiato‚É‚P
+        asiato[y][x]=1;//èª°ã‚‚é€šã£ã¦ã„ãªã‘ã‚Œã°asiatoã«ï¼‘
     }
     return;
 }
 
-void TITLE_BORD(void){  //ƒ^ƒCƒgƒ‹‰æ–ÊEƒQ[ƒ€ƒ‚[ƒhˆ—
+void TITLE_BORD(void){  //ã‚¿ã‚¤ãƒˆãƒ«ç”»é¢ãƒ»ã‚²ãƒ¼ãƒ ãƒ¢ãƒ¼ãƒ‰å‡¦ç†
 
-    gotoXY(0,0);                    //ƒ{[ƒh”wŒi•\¦
+    gotoXY(0,0);                    //ãƒœãƒ¼ãƒ‰èƒŒæ™¯è¡¨ç¤º
     for(j=0;j<21;j++){              //
         setColor(0x22);             //
         for(i=0;i<83;i++){          //
@@ -192,7 +188,7 @@ void TITLE_BORD(void){  //ƒ^ƒCƒgƒ‹‰æ–ÊEƒQ[ƒ€ƒ‚[ƒhˆ—
 
     setColor(0x2f);
     gotoXY(18,7);
-    printf("ƒ‰ƒCƒgƒT[ƒNƒ‹ƒQ[ƒ€\n\n");
+    printf("ãƒ©ã‚¤ãƒˆã‚µãƒ¼ã‚¯ãƒ«ã‚²ãƒ¼ãƒ \n\n");
     
     setColor(0x70);
     gotoXY(63,7);
@@ -212,20 +208,20 @@ void TITLE_BORD(void){  //ƒ^ƒCƒgƒ‹‰æ–ÊEƒQ[ƒ€ƒ‚[ƒhˆ—
     printf("*");
     gotoXY(63,17);
     setColor(0x70);
-    printf("PLAYER MOVE:ª«©¨");
+    printf("PLAYER MOVE:â†‘â†“â†â†’");
 
-    do{     //ƒQ[ƒ€ƒ‚[ƒh‘I‘ğƒ‹[ƒv
+    do{     //ã‚²ãƒ¼ãƒ ãƒ¢ãƒ¼ãƒ‰é¸æŠãƒ«ãƒ¼ãƒ—
     setColor(0x2f);
     gotoXY(12,12);
     printf("GAMEMODE  1:EASY 2:NOMAL 3:HARD >:"); 
         gotoXY(46,12);
         scanf("%c",&gamemode);
-        if(gamemode>'3'||gamemode<'1'){ //gamemode“ü—ÍƒGƒ‰[”»’è
+        if(gamemode>'3'||gamemode<'1'){ //gamemodeå…¥åŠ›ã‚¨ãƒ©ãƒ¼åˆ¤å®š
             gotoXY(21,14);
             setColor(0x2c);
             printf("gamemode error!");
             fflush(stdin);
-            for(i=46;i<61;i++){ //“ü—Í“à—e‚ğ”wŒi‚Åã‘‚«Á‹
+            for(i=46;i<61;i++){ //å…¥åŠ›å†…å®¹ã‚’èƒŒæ™¯ã§ä¸Šæ›¸ãæ¶ˆå»
                 gotoXY(i,12);
                 setColor(0x22);
                 printf("+");
@@ -242,7 +238,7 @@ void TITLE_BORD(void){  //ƒ^ƒCƒgƒ‹‰æ–ÊEƒQ[ƒ€ƒ‚[ƒhˆ—
 }
 
 
-void GAME_BORD(void){   //play‰æ–Ê
+void GAME_BORD(void){   //playç”»é¢
     setColor(0x22);
     gotoXY(0,0);
     for(j=0;j<21;j++){
@@ -253,40 +249,40 @@ void GAME_BORD(void){   //play‰æ–Ê
     }
 }
 
-void ENEMY1(void){  //enemy1ˆÚ“®E•\¦
+void ENEMY1(void){  //enemy1ç§»å‹•ãƒ»è¡¨ç¤º
     int eran1;
-    gotoXY(ex1,ey1);//‰ŠúˆÊ’u–”‚Í‘O‰ñˆÊ’u‚ÉˆÚ“®Aƒ}[ƒJ[•\¦
+    gotoXY(ex1,ey1);//åˆæœŸä½ç½®åˆã¯å‰å›ä½ç½®ã«ç§»å‹•ã€ãƒãƒ¼ã‚«ãƒ¼è¡¨ç¤º
     setColor(0xc0); //
     printf("*");    //
-    if(movecount%5==0){//5‰ñˆÚ“®‚·‚é‚²‚Æ‚É•ûŒü“]Š·
+    if(movecount%5==0){//5å›ç§»å‹•ã™ã‚‹ã”ã¨ã«æ–¹å‘è»¢æ›
         eran1=rand()%3;
         switch(eran1){
             case 0:
-                ehoukou1++;//¶Ü
+                ehoukou1++;//å·¦æŠ˜
                 break;
             case 1:
-                ehoukou1--;//‰EÜ
+                ehoukou1--;//å³æŠ˜
                 break;
-            case 3: //‚»‚Ì‚Ü‚Ü
+            case 3: //ãã®ã¾ã¾
                 break;
         }
     }
-    ehoukou1=ehoukoulimit(ehoukou1);//ehoukou‚ª‚P`‚S‚É‚È‚é‚æ‚¤‚É§ŒÀ
+    ehoukou1=ehoukoulimit(ehoukou1);//ehoukouãŒï¼‘ï½ï¼”ã«ãªã‚‹ã‚ˆã†ã«åˆ¶é™
 
-    if(ehoukou1==RIGHT_MOVE)ex1++;  //ˆÊ’u•ÏX
+    if(ehoukou1==RIGHT_MOVE)ex1++;  //ä½ç½®å¤‰æ›´
     if(ehoukou1==LEFT_MOVE)ex1--;   //
     if(ehoukou1==UP_MOVE)ey1--;     //
     if(ehoukou1==DOWN_MOVE)ey1++;   //
     
-    ex1=Xlimit(ex1);//ˆÊ’u§ŒÀ
+    ex1=Xlimit(ex1);//ä½ç½®åˆ¶é™
     ey1=Ylimit(ey1);//
-    if(asiato[ey1][ex1]!=1){    //“_”ŒvZ‚Å‚P‚ğƒJƒEƒ“ƒg‚·‚é‚½‚ßAã‘‚«‚µ‚È‚¢‚æ‚¤‚É
-        asiato[ey1][ex1]=2;     //ˆÚ“®êŠ‚É‚Q‚ğ‘ã“ü
+    if(asiato[ey1][ex1]!=1){    //ç‚¹æ•°è¨ˆç®—ã§ï¼‘ã‚’ã‚«ã‚¦ãƒ³ãƒˆã™ã‚‹ãŸã‚ã€ä¸Šæ›¸ãã—ãªã„ã‚ˆã†ã«
+        asiato[ey1][ex1]=2;     //ç§»å‹•å ´æ‰€ã«ï¼’ã‚’ä»£å…¥
     }
     return;
 }
 
-void ENEMY2(void){  //enemy2ˆÚ“®E•\¦
+void ENEMY2(void){  //enemy2ç§»å‹•ãƒ»è¡¨ç¤º
     int eran2;
     gotoXY(ex2,ey2);
     setColor(0xe0);
@@ -321,7 +317,7 @@ void ENEMY2(void){  //enemy2ˆÚ“®E•\¦
 }
 
 
-void asiato_0(void){    //ˆÚ“®—š—ğƒŠƒZƒbƒg
+void asiato_0(void){    //ç§»å‹•å±¥æ­´ãƒªã‚»ãƒƒãƒˆ
     for(j=0;j<21;j++){
         for(i=0;i<61;i++){
             asiato[j][i]=0;
@@ -330,19 +326,19 @@ void asiato_0(void){    //ˆÚ“®—š—ğƒŠƒZƒbƒg
     return;
 }
 
-int Xlimit(int xl){ //X²§ŒÀ
+int Xlimit(int xl){ //Xè»¸åˆ¶é™
     if(xl>60)xl=0;
     if(xl<0)xl=60;
 
     return xl;
 }
-int Ylimit(int yl){ //Y²§ŒÀ
+int Ylimit(int yl){ //Yè»¸åˆ¶é™
     if(yl<0)yl=20;
     if(yl>20)yl=0;
     return yl;
 }
 
-int ehoukoulimit(int a){    //•ûŒü§ŒÀ
+int ehoukoulimit(int a){    //æ–¹å‘åˆ¶é™
     if(a>4)a=1;
     if(a<1)a=4;
     return a;
